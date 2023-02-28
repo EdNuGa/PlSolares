@@ -13,6 +13,8 @@ public class Solares {
 
     public static void main(String[] args) throws IOException {
         ArrayList<Casa> casas = new ArrayList<>();
+        Placas[] listplacas = new Placas[10];
+        int contador = 0;
         boolean salir = false;
         BufferedReader Consola = new BufferedReader(new InputStreamReader(System.in));
         
@@ -51,6 +53,18 @@ public class Solares {
                         //asd;
                         break;
                     case "oncasa":
+                        for(Casa lacasa: casas){
+                            if(lacasa.getNif() == args[1]){
+                                if(lacasa.getInterruptor() == true){
+                                    System.out.println("ERROR: La casa ja té l'interruptor encès.");
+                                } else {
+                                    lacasa.setInterruptor();
+                                    System.out.println("OK: Interruptor general activat.");
+                                }
+                            } else {
+                                System.out.println("ERROR: No s'ha trovat la casa.");
+                            }
+                        }
                         //asd;
                         break;
                     case "onaparell":

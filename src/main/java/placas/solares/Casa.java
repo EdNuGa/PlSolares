@@ -34,4 +34,8 @@ public class Casa {
         return this.interruptor;
     }
     
+    public void setInterruptor(){
+        this.interruptor = true;
+    }
+    
 }
