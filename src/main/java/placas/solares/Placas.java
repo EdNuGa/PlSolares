@@ -15,4 +15,16 @@ public class Placas {
         this.potencia = potencia;
     }
     
+    public Integer getSuperficie(){
+        return this.superficie;
+    }
+    
+    public float getPrecio(){
+        return this.precio;
+    }
+    
+    public Integer getPotencia(){
+        return this.potencia;
+    }
+    
 }

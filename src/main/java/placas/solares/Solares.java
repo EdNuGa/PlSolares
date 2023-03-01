@@ -45,9 +45,24 @@ public class Solares {
                         String consumo = datos[4];
                         int superficie = Integer.parseInt(longitud);
                         float precio = Float.parseFloat(valor);
-                        int potencia = Integer.parseInt(consumo);
-                        Placas nuevo = new Placas(superficie, precio, potencia);
+                        int potencia = Integer.parseInt(consumo);                                                
                         //Falta buscar la casa y añadir a una lista.
+                        for(Casa lacasa: casas){
+                            Integer supTotal = lacasa.getSuperficie();
+                            Integer supRest = lacasa.getRestante();
+                            Integer resto = supTotal - supRest;
+                            if(lacasa.getNif().equals(nif)){
+                                if(superficie < resto){
+                                    lacasa.setPlaca(superficie,precio,potencia);                                
+                                } else {                                
+                                    System.out.println("Controlador: NifCasa = " + lacasa.getNif());
+                                }
+                            } else{
+                                System.out.println("ERROR: No hi ha espai disponible per a instal·lar aquesta placa.");
+                            }
+                                
+                        }
+                        
                         break;
                     case "addaparell":
                         //asd;
@@ -78,7 +93,7 @@ public class Solares {
                         System.out.println("Cases registrades: " + casas.size());
                         Integer contar = 1;
                         for(Casa lacasa : casas){
-                            System.out.println("Casa " + contar);
+                            System.out.println("\nCasa " + contar);
                             System.out.println("Client: " + lacasa.getNif() + " - " + lacasa.getNombre());
                             System.out.println("Superficie teulada: " + lacasa.getSuperficie());
                             System.out.println("Superficie restant: ");
@@ -87,9 +102,8 @@ public class Solares {
                             } else {
                                 System.out.println("Interruptor general: apagat");
                             }
-                            System.out.println("Places solars instal·lades: ");
-                            System.out.println("Aparells registrats: ");
-                            System.out.println("");
+                            System.out.println("Places solars instal·lades: " + lacasa.getPlacas());
+                            System.out.println("Aparells registrats: " + "\n");
                             contar++;
                         }
                         break;
